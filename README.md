@@ -2,6 +2,13 @@
 
 This is a Blog project built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to create, read, update, and delete blog posts. The application uses JWT-based authentication for user login and registration.
 
+# Images
+![image_alt](https://github.com/Ankitsm04/Full-stack-Blogging-App/blob/WEBED/images/image1.png)
+
+![image_alt](https://github.com/Ankitsm04/Full-stack-Blogging-App/blob/WEBED/images/image2.png)
+
+![image_alt](https://github.com/Ankitsm04/Full-stack-Blogging-App/blob/WEBED/images/image3.png)
+
 ## Features
 
 - User Authentication (Sign Up & Login)
