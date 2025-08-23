@@ -8,6 +8,7 @@ const BlogEdit = ({ blog, onCancel }) => {
   const [description, setDescription] = useState(blog.description);
   const [image, setImage] = useState(blog.image);
 
+  console.log(blog);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

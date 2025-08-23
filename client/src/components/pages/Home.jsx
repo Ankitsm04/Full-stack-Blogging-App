@@ -17,20 +17,6 @@ const categories = [
   'C++',
   'C#',
   'Ruby',
-  'PHP',
-  'Go',
-  'Rust',
-  'Swift',
-  'Kotlin',
-  'TypeScript',
-  'SQL',
-  'HTML',
-  'CSS',
-  'React',
-  'Angular',
-  'Vue',
-  'Node.js',
-  'Express.js',
 ];
 
 const Home = () => {

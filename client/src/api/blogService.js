@@ -3,7 +3,7 @@ import axios from 'axios';
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 export const deleteBlogById = async (id) => {
-    await axios.delete(`/api/blog/${id}`);
+    await axios.delete(`${apiUrl}/api/blog/${id}`);
   };
 
 
