@@ -8,7 +8,7 @@ const commentRouter = require("./router/comment-router")
 const quizRouter = require("./router/quiz-router")
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://full-stack-blogging-app-five.vercel.app/'],
+  origin: ['http://localhost:3000', 'https://full-stack-blogging-app-five.vercel.app'],
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   allowedHeaders: 'Content-Type,Authorization'
 }))
