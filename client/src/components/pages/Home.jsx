@@ -11,15 +11,26 @@ const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const categories = [
   'all',
-  'Cyber Threats & Vulnerabilities',
-  'Cybersecurity Best Practices',
-  'Cybersecurity Tools & Solutions',
-  'Cryptography and Encryption',
-  'Compliance & Legal Aspects',
-  'Emerging Technologies in Cybersecurity',
-  'Incident Response & Management',
-  'Data Privacy and Protection',
-  'Security Awareness & Education'
+  'JavaScript',
+  'Python',
+  'Java',
+  'C++',
+  'C#',
+  'Ruby',
+  'PHP',
+  'Go',
+  'Rust',
+  'Swift',
+  'Kotlin',
+  'TypeScript',
+  'SQL',
+  'HTML',
+  'CSS',
+  'React',
+  'Angular',
+  'Vue',
+  'Node.js',
+  'Express.js',
 ];
 
 const Home = () => {
