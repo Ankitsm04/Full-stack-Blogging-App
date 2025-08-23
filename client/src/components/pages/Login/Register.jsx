@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUserAlt, FaLock, FaEnvelope, FaPhoneAlt, FaImage, FaUser } from 'react-icons/fa';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 function Register() {
   const [formData, setFormData] = useState({
     username: '',
@@ -89,9 +91,9 @@ function Register() {
     }
 
     setLoading(true);
-    const link = "http://localhost:5000/api/auth/register/"
+    const link = `${apiUrl}/api/auth/register/`
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/register/`, {
+      const response = await fetch(`${apiUrl}/api/auth/register/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

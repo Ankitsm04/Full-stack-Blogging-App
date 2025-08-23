@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 const TOKEN_KEY = 'authToken';
 const USER_ID = 'userId';
 const USERNAME_KEY = 'username';
@@ -8,7 +9,7 @@ const ADMIN = 'admin';
 
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+    const response = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
     const { token, userId, username, profile_picture,admin } = response.data;
 
     localStorage.setItem(TOKEN_KEY, token);
@@ -25,7 +26,7 @@ export const loginUser = async (email, password) => {
 
 export const registerUser = async (userData) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/auth/register', userData);
+    const response = await axios.post(`${apiUrl}/api/auth/register`, userData);
     const { token, userId, username, profile_picture } = response.data;
     
     localStorage.setItem(TOKEN_KEY, token);
@@ -41,7 +42,7 @@ export const registerUser = async (userData) => {
 
 export const fetchUserById = async (id) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/auth/get-user-by-id/${id}`);
+    const response = await fetch(`${apiUrl}/api/auth/get-user-by-id/${id}`);
     if (!response.ok) {
       throw new Error('Failed to fetch user data');
     }
@@ -57,7 +58,7 @@ export const getToken = () => {
 
 export const fetchUserBlogs = async (userId, page = 1, limit = 6) => {
   try {
-    const responseData = await fetch(`http://localhost:5000/api/blog/get-blog-by-userid/${userId}?page=${page}&limit=${limit}`);
+    const responseData = await fetch(`${apiUrl}/api/blog/get-blog-by-userid/${userId}?page=${page}&limit=${limit}`);
     if (!responseData.ok) {
       throw new Error('Failed to fetch user blogs');
     }
@@ -81,7 +82,7 @@ export const logoutUser = () => {
 export const updateUserById = async (id, updatedData) => {
   try {
     const token = getToken();
-    const response = await axios.patch(`http://localhost:5000/api/auth/update/${id}`, updatedData, {
+    const response = await axios.patch(`${apiUrl}/api/auth/update/${id}`, updatedData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

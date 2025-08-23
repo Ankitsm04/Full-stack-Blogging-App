@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useAuth } from '../components/auth/AuthContext'; // Adjust the import path
+import { useAuth } from '../components/auth/AuthContext'; 
 import { FaUserCircle, FaSignOutAlt, FaChevronRight, FaSignInAlt, FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {

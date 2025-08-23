@@ -7,6 +7,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Loader from '../utils/Loader';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const categories = [
   'all',
   'Cyber Threats & Vulnerabilities',
@@ -41,7 +43,7 @@ const Home = () => {
     try {
       const blogsData = await fetchBlogs(pageNumber, limit);
       const updatedBlogs = await Promise.all(blogsData.blogs.map(async (blog) => {
-        const userResponse = await fetch(`http://localhost:5000/api/auth/get-user-by-id/${blog.created_by}`);
+        const userResponse = await fetch(`${apiUrl}/api/auth/get-user-by-id/${blog.created_by}`);
         const userData = await userResponse.json();
         return {
           ...blog,
@@ -67,7 +69,7 @@ const Home = () => {
     try {
       const blogsData = await fetchBlogsByCategory(selectedCategory, pageNumber, limit);
       const updatedBlogs = await Promise.all(blogsData.blogs.map(async (blog) => {
-        const userResponse = await fetch(`http://localhost:5000/api/auth/get-user-by-id/${blog.created_by}`);
+        const userResponse = await fetch(`${apiUrl}/api/auth/get-user-by-id/${blog.created_by}`);
         const userData = await userResponse.json();
         return {
           ...blog,
@@ -102,7 +104,7 @@ const Home = () => {
         setTotalSearchPages(0);
       } else {
         const updatedSearchResults = await Promise.all(searchResults.blogs.map(async (blog) => {
-          const userResponse = await fetch(`http://localhost:5000/api/auth/get-user-by-id/${blog.created_by}`);
+          const userResponse = await fetch(`${apiUrl}/api/auth/get-user-by-id/${blog.created_by}`);
           const userData = await userResponse.json();
           return {
             ...blog,

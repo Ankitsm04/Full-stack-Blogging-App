@@ -15,6 +15,9 @@ const BlogCreate = () => {
   const [imagePreview, setImagePreview] = useState('');
   const Token = localStorage.getItem('authToken');
 
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+  
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -48,7 +51,7 @@ const BlogCreate = () => {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/blog/create`,
+        `${apiUrl}/api/blog/create`,
         {
           title,
           image,

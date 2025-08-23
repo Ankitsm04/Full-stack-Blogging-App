@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const msg = document.getElementById('message')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/send-reset-mail", {
+    const response = await fetch(`${apiUrl}/api/auth/send-reset-mail`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -10,6 +10,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { ToastContainer, toast } from 'react-toastify';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const BlogDetails = ({ selectedBlog, handleBackToBlogs }) => {
   const { isLoggedIn } = useAuth();
   const [user, setUser] = useState(null);
@@ -53,7 +55,7 @@ const BlogDetails = ({ selectedBlog, handleBackToBlogs }) => {
     
     if (confirmReport) {
       try {
-        const report = await fetch(`http://localhost:5000/api/blog/report/${blogID}`);
+        const report = await fetch(`${apiUrl}/api/blog/report/${blogID}`);
         if (!report.ok) {
           throw new Error('Failed to report the blog');
         }

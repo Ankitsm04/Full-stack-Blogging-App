@@ -3,6 +3,8 @@ import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const PasswordReset = () => {
     const {email} = useParams()
     const navigate = useNavigate()
@@ -29,7 +31,7 @@ const PasswordReset = () => {
         }
     
         try {
-          const response = await fetch(`http://localhost:5000/api/auth/password-reset/${email}`, {
+          const response = await fetch(`${apiUrl}/api/auth/password-reset/${email}`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

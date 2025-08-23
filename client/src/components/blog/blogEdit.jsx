@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const BlogEdit = ({ blog, onCancel }) => {
   const [title, setTitle] = useState(blog.title);
   const [description, setDescription] = useState(blog.description);
@@ -9,7 +11,7 @@ const BlogEdit = ({ blog, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/api/update-blog/${blog._id}`, {
+      await axios.patch(`${apiUrl}/api/update-blog/${blog._id}`, {
         title,
         description,
         image,

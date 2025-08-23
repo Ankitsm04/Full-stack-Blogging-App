@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 export const deleteBlogById = async (id) => {
     await axios.delete(`/api/blog/${id}`);
   };
@@ -7,7 +9,7 @@ export const deleteBlogById = async (id) => {
 
 export const updateBlogById = async (id, data) => {
   try {
-    const response = await axios.patch(`http://localhost:5000/api/blog/update-blog/${id}`, data, {
+    const response = await axios.patch(`${apiUrl}/api/blog/update-blog/${id}`, data, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -20,7 +22,7 @@ export const updateBlogById = async (id, data) => {
 
 export const fetchBlogs = async (page = 1, limit = 6) => {
   try {
-      const response = await axios.get(`http://localhost:5000/api/blog/get-blogs`, {
+      const response = await axios.get(`${apiUrl}/api/blog/get-blogs`, {
           params: { page, limit }
       });
       return response.data;
@@ -33,7 +35,7 @@ export const fetchBlogs = async (page = 1, limit = 6) => {
 
 export const getBlogById = async (id)=>{
     try {
-        const response = await axios.get(`http://localhost:5000/api/blog/get-blog-by-id/${id}`)
+        const response = await axios.get(`${apiUrl}/api/blog/get-blog-by-id/${id}`)
         return response.data
     } catch (error) {
         console.log(error);
@@ -42,7 +44,7 @@ export const getBlogById = async (id)=>{
 
 export const fetchBlogsByCategory = async (category, page = 1, limit = 6) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/blog/get-blog-by-category/${category}?page=${page}&limit=${limit}`);
+    const response = await fetch(`${apiUrl}/api/blog/get-blog-by-category/${category}?page=${page}&limit=${limit}`);
     if (!response.ok) {
       throw new Error(`Failed to fetch blogs for category ${category}`);
     }
@@ -58,7 +60,7 @@ export const fetchBlogsByCategory = async (category, page = 1, limit = 6) => {
 
 export const searchBlogsByKey = async (key,page=1,limit=6) => {
   try {
-    const response = await axios.get(`http://localhost:5000/api/blog/search/${key}?page=${page}&limit=${limit}`);
+    const response = await axios.get(`${apiUrl}/api/blog/search/${key}?page=${page}&limit=${limit}`);
     return response.data;
   } catch (error) {
     console.error('Error searching blogs', error);
@@ -67,14 +69,14 @@ export const searchBlogsByKey = async (key,page=1,limit=6) => {
 };
 
 export const fetchComments = async (blogId) => {
-  const response = await fetch(`http://localhost:5000/api/comment/get/${blogId}`);
+  const response = await fetch(`${apiUrl}/api/comment/get/${blogId}`);
   if (!response.ok) throw new Error('Failed to fetch comments');
   return await response.json();
 };
 
 export const postComment = async (blogId, commentData) => {
   try {
-      const response = await fetch(`http://localhost:5000/api/comment/${blogId}`, {
+      const response = await fetch(`${apiUrl}/api/comment/${blogId}`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
